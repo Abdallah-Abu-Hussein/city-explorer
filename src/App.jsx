@@ -10,11 +10,12 @@ class App extends React.Component {
       locationResult: {},
       searchQuery: '',
       showLocationInfo: false,
+      showError:false,
     }
   }
 
   getLocation = async (event) => {
-    event.preventDefault();
+    try{event.preventDefault();
 
     // console.log('hello let\'s go somewhere');
     // let cityName = event.target.city.value;
@@ -26,6 +27,15 @@ class App extends React.Component {
 
     this.setState({ locationResult: locResults.data[0] });
   }
+  catch{
+    console.log('something wrong ');
+    this.setState({
+      showError:true,
+      showLocationInfo:false,
+    })
+  }
+}
+    
   render() {
     return (
       <div className={"text-center "}>
@@ -39,6 +49,18 @@ class App extends React.Component {
           <p>latitude : {this.state.locationResult.lat}</p>
           <p>longitude : {this.state.locationResult.lon}</p>
           <img className={'rounded float-right'} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LocationIQ_Key}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`} alt="city" /></>}
+
+          {this.state.showError &&
+          <> 
+          
+          <h1> 🥺 Page NotFound</h1>
+          <ul>
+            <li>Make sure you entered a valid City name</li>
+            <li>Refresh The Page</li>
+          </ul>
+          <img src="https://freefrontend.com/assets/img/html-funny-404-pages/SVG-Animation-404-Page.gif" alt="" />
+          </>
+          }
 
 
 

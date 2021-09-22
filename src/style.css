@@ -3,3 +3,10 @@ body{
     font-family:'Gluten',cursive;
     background-color: rgb(255, 134, 134);
 }
+.lol{
+  width:auto;
+  border-bottom:solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

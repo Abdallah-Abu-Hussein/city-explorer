@@ -37,7 +37,7 @@ class App extends React.Component {
         searchQuery: event.target.city.value
       });
       let reqUrl = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LocationIQ_Key}&q=${this.state.searchQuery}&format=json`;
-      let weatherInfo = await axios.get(`http://localhost:3008/weather?city=${this.state.city}`);
+      let weatherInfo = await axios.get(`http://${process.env.REACT_APP_API}/weather?city=${this.state.city}`);
 
       let locResults = await axios.get(reqUrl);
 
@@ -90,7 +90,7 @@ class App extends React.Component {
 
 
         {this.state.showError &&
-          <> <h3>😢Page Not found Sorry !!</h3>
+          <> <h3>😢Page Not found Sorry !! you can only type amman/ paris / seattle for the weather info in this lab 07 </h3>
             <img src="https://freefrontend.com/assets/img/html-funny-404-pages/SVG-Animation-404-Page.gif" alt="" />
           </>}
       </div>

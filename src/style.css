@@ -5,7 +5,7 @@ body{
 }
 .lol{
   width:auto;
-  border-bottom:solid 1px black;
+  text-decoration-line: underline;
   display: flex;
   justify-content: center;
   align-items: center;

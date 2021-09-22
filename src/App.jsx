@@ -37,7 +37,7 @@ class App extends React.Component {
         searchQuery: event.target.city.value
       });
       let reqUrl = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LocationIQ_Key}&q=${this.state.searchQuery}&format=json`;
-      let weatherInfo = await axios.get(`http://${process.env.REACT_APP_API}/weather?city=${this.state.city}`);
+      let weatherInfo = await axios.get(`${process.env.REACT_APP_API}/weather?city=${this.state.city}`);
 
       let locResults = await axios.get(reqUrl);
 
@@ -79,7 +79,7 @@ class App extends React.Component {
   {
             this.state.weatherInfo.map((info, idx) => {
               return (<div>
-                <Weather style={{ textAlign: "center" }} kry={idx} weatherInfo={info} />
+                <Weather key={idx} style={{ textAlign: "center" }} kry={idx} weatherInfo={info} />
               </div>
               )
             })

@@ -22,7 +22,7 @@ class App extends React.Component {
 
   getMovie = async () => {
 
-    let reqMovieUrl = `http://city-explorers.herokuapp.com/getMovie?city=${this.state.searchQuery}`;
+    let reqMovieUrl = `${process.env.REACT_APP_API}/getMovie?city=${this.state.searchQuery}`;
 
     let movieRes = await axios.get(reqMovieUrl);
     console.log(movieRes);
@@ -35,8 +35,7 @@ class App extends React.Component {
 
   getWeatherData = async() =>{
     
-    // let weatherInfo = await axios.get(`${process.env.REACT_APP_API}/weather?city=${this.state.searchQuery}`);
-    let weatherInfo = await axios.get(`http://city-explorers.herokuapp.com/getWeather?city=${this.state.searchQuery}`);
+    let weatherInfo = await axios.get(`${process.env.REACT_APP_API}/getWeather?city=${this.state.searchQuery}`);
 
     this.setState({
       weatherInfo:weatherInfo.data,

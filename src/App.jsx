@@ -14,9 +14,9 @@ class App extends React.Component {
       searchQuery: '',
       showLocationInfo: false,
       showError: false,
-      showWeather : false,
+      showWeather: false,
       weatherInfo: [],
-      movieInfo:[],
+      movieInfo: [],
     }
   }
 
@@ -33,13 +33,12 @@ class App extends React.Component {
   }
 
 
-  getWeatherData = async() =>{
-    
+  getWeatherData = async () => {
     let weatherInfo = await axios.get(`${process.env.REACT_APP_API}/getWeather?city=${this.state.searchQuery}`);
 
     this.setState({
-      weatherInfo:weatherInfo.data,
-      showWeather:true,
+      weatherInfo: weatherInfo.data,
+      showWeather: true,
     });
   }
 
@@ -59,8 +58,8 @@ class App extends React.Component {
         showError: false,
         showLocationInfo: true,
       });
-        this.getWeatherData();
-        this.getMovie();
+      this.getWeatherData();
+      this.getMovie();
     }
 
     catch {
@@ -85,22 +84,22 @@ class App extends React.Component {
           <p>City Name 🏙️: {this.state.searchQuery}</p>
           <p>latitude 🌍: {this.state.locationResult.lat}</p>
           <p>longitude 🌍: {this.state.locationResult.lon}</p>
-  {
+          {
             this.state.weatherInfo.map((info, idx) => {
               return (<div>
-                <Weather key={idx} style={{ textAlign: "center" }}  weatherInfo={info} />
+                <Weather key={idx} style={{ textAlign: "center" }} weatherInfo={info} />
               </div>
               )
             })
           }
-           <img className={'rounded float-right'} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LocationIQ_Key}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`} alt="city" />
+          <img className={'rounded float-right'} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LocationIQ_Key}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`} alt="city" />
 
-          {this.state.movieInfo.map((info,idx) => {
-                    return (
-                      <Movie key = {idx} movieInfo={info} />
-                    )
-                  })}
-         </>}
+          {this.state.movieInfo.map((info, idx) => {
+            return (
+              <Movie key={idx} movieInfo={info} />
+            )
+          })}
+        </>}
 
 
 

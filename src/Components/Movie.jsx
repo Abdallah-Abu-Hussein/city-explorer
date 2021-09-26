@@ -1,18 +1,14 @@
 import React, { Component } from "react";
-import '../style.css';
+import MovieDay from "./MovieDay";
 class Movie extends Component {
     render() {
         return (
-            <div className={'container'}>
             <div>
-                            <p>Title: {this.props.movieInfo.title}</p>
-                            <p>Overview: {this.props.movieInfo.overview}</p>
-                            <p>Average Votes: {this.props.movieInfo.average_votes}</p>
-                            <p>Total Votes: {this.props.movieInfo.total_votes}</p>
-                            <p>Popularity: {this.props.movieInfo.popularity}</p>
-                            <p>Released On: {this.props.movieInfo.released_on}</p>
-                            <img src={this.props.movieInfo.image_url} alt={this.props.movieInfo.title} />
-            </div>
+                <MovieDay title={this.props.movieInfo.title} overview={this.props.movieInfo.overview}
+                    average_votes={this.props.movieInfo.average_votes} total_votes={this.props.movieInfo.total_votes}
+                    image_url={this.props.movieInfo.image_url} alt={this.props.movieInfo.title}
+                    popularity={this.props.movieInfo.popularity} released_on={this.props.movieInfo.released_on} />
+       
             </div>
         )
     }

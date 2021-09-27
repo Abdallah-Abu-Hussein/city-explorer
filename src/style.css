@@ -10,3 +10,12 @@ body{
   justify-content: center;
   align-items: center;
 }
+.container{
+  margin: 5% 2% 5% 2%;
+  box-sizing: content-box;
+  border:solid 1px black;
+}
+.container>img{
+  width: 200px;
+  height:200px;
+}
